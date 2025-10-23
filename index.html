@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fujina Tokyo | Links (JP/EN/VI)</title>
-  <meta name="description" content="Fujina Tokyo Link in Bio — Book a table, see map, happy hour, and hours. (JP/EN/VI)" />
+  <title>Fujina Tokyo | Book Now (JP/EN/VI)</title>
+  <meta name="description" content="Book a table at Fujina Tokyo. JP/EN/VI. One-tap call, Messenger DM, or Google Form." />
   <style>
-    :root {
-      --bg:#0b0b0f; --panel:#141420; --line:#2c2c3a; --fg:#fff; --muted:#bfc1c7; --accent:#d4af37;
-    }
+    :root { --bg:#0b0b0f; --panel:#141420; --line:#2c2c3a; --fg:#fff; --muted:#bfc1c7; --accent:#d4af37; }
     html,body { margin:0; background:var(--bg); color:var(--fg); font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans','Noto Sans JP','Noto Sans Vietnamese','Hiragino Kaku Gothic ProN','Meiryo',sans-serif; }
     .wrap { max-width:720px; margin:0 auto; padding:28px 18px 56px; }
     .brand { text-align:center; font-weight:700; font-size:28px; letter-spacing:.08em; }
+    .version { text-align:center; font-size:12px; opacity:.65; margin-top:6px; }
     .sub { text-align:center; opacity:.9; margin-top:6px; }
     .hours { text-align:center; opacity:.85; margin:10px 0 18px; font-size:14px; }
     .langbar { display:flex; gap:8px; justify-content:center; margin:10px 0 18px; flex-wrap:wrap; }
@@ -19,16 +18,28 @@
     .chip.active { outline:2px solid var(--accent); }
     .btn { display:block; text-decoration:none; background:var(--panel); border:1px solid var(--line); padding:14px 16px; border-radius:14px; text-align:center; margin:10px 0; font-size:16px; color:var(--fg); }
     .btn:hover { background:#1a1a28; }
+    .grid { display:grid; grid-template-columns:1fr; gap:12px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .card h3 { margin:0 0 10px; font-size:18px; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+    .row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }
+    label { font-size:13px; opacity:.9; }
+    input, select { width:100%; padding:12px; border-radius:12px; border:1px solid var(--line); background:#101018; color:var(--fg); }
+    .actions { display:grid; grid-template-columns:1fr; gap:10px; margin-top:14px; }
+    .small { font-size:12px; opacity:.8; }
     .section { margin-top:26px; padding-top:12px; border-top:1px solid var(--line); }
-    .section h3 { margin:0 0 6px; font-size:18px; letter-spacing:.01em; }
-    .tri { font-size:13px; opacity:.9; line-height:1.65; }
     .footer { margin-top:34px; text-align:center; font-size:12px; opacity:.7; }
     .hide { display:none; }
+    .notice { background:#201f2a; border:1px dashed #46465a; padding:10px 12px; border-radius:10px; margin-top:10px; font-size:13px; }
+    @media (min-width:640px) {
+      .row, .row-3 { grid-template-columns: repeat(3, 1fr); }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="brand">FUJINA TOKYO IZAKAYA</div>
+    <div class="version">v2025-10-23-Booking</div>
     <div class="sub">Phạm Viết Chánh, Bình Thạnh, HCMC</div>
 
     <!-- Language switcher -->
@@ -38,71 +49,73 @@
       <button class="chip" data-lang="vi">Tiếng Việt</button>
     </div>
 
-    <!-- Common buttons -->
-    <a class="btn" href="tel:0853804188">📞 Call / 電話 / Gọi: 0853804188</a>
+    <!-- Buttons -->
+    <a class="btn" href="tel:0853804188">📞 0853804188 — Call / 電話 / Gọi</a>
+    <a class="btn" href="https://m.me/61578722793188" target="_blank">💬 Facebook Messenger</a>
     <a class="btn" href="https://www.instagram.com/fujina_tokyo/" target="_blank">Instagram</a>
     <a class="btn" href="https://www.facebook.com/profile.php?id=61578722793188" target="_blank">Facebook</a>
     <a class="btn" href="https://www.tiktok.com/@fujinatokyo" target="_blank">TikTok</a>
     <a class="btn" href="https://www.google.com/search?sca_esv=0fc9a65a01d87240&authuser=0&gl=jp&hl=ja&output=search&q=FUJINA+TOKYO+%E3%81%B5%E3%81%98%E3%81%AA%E6%9D%B1%E4%BA%AC&ludocid=8776598982094666555&lsig=AB86z5VxiAsWiSZwnbUxVIKGWBib&ved=1i%3A3%2Ct%3A109124%2Ce%3A2%2Cp%3AnnT5aLnaI7SPvr0PkIW40QY%3A6" target="_blank">Google Maps</a>
-    <a class="btn" href="#" target="_blank">Zalo (OA) – Coming soon</a>
 
-    <!-- Hours line (multi) -->
-    <div class="hours" data-lang="jp">営業時間：17:30–翌2:00（⾦⼟〜翌4:00）</div>
-    <div class="hours hide" data-lang="en">Hours: 17:30–02:00 (Fri–Sat till 04:00)</div>
-    <div class="hours hide" data-lang="vi">Giờ mở cửa: 17:30–02:00 (T6–T7 đến 04:00)</div>
-
-    <!-- JP sections -->
-    <div class="section" data-lang="jp">
-      <h3 id="book">📌 予約 / Book</h3>
-      <div class="tri">ご予約の場合は下記の情報をお送りください👇<br>【日付】＿／【時間】＿／【人数】＿名／【お名前】＿／【電話】＿</div>
-    </div>
-    <div class="section" data-lang="jp">
-      <h3 id="map">📌 行き方 / Access</h3>
-      <div class="tri">Phạm Viết Chánhの路地内。配車アプリに住所を貼付OK：106 Phạm Viết Chánh, Bình Thạnh, HCMC</div>
-    </div>
-    <div class="section" data-lang="jp">
-      <h3 id="happyhour">📌 ハッピーアワー 17:30–20:00</h3>
-      <div class="tri">ドラフトビール＆ハイボールがお得。合言葉 <b>FUJI50</b> で特典。</div>
-    </div>
-    <div class="section" data-lang="jp">
-      <h3 id="hours">📌 営業時間</h3>
-      <div class="tri">17:30–翌2:00（⾦⼟〜翌4:00）｜Tel：0853804188</div>
+    <!-- Booking widget (multi-lang text, same inputs) -->
+    <div class="card" data-lang="jp">
+      <h3>🕰️ 予約フォーム（コピー→DMで貼付）</h3>
+      <div class="row-3">
+        <div><label>日付</label><input id="d" type="date"></div>
+        <div><label>時間</label><input id="t" type="time"></div>
+        <div><label>人数</label><input id="g" type="number" min="1" value="2"></div>
+      </div>
+      <div class="row">
+        <div><label>お名前</label><input id="n" type="text" placeholder="Your name"></div>
+        <div><label>電話</label><input id="p" type="tel" placeholder="0853804188"></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#" id="copyOpenJP">📋 コピーしてMessengerを開く</a>
+        <a class="btn" href="#" target="_blank">📝 Googleフォーム（任意）</a>
+      </div>
+      <div class="notice">※ Messengerは事前入力が制限されているため、<b>本文はクリップボードにコピー</b>されます。開いたらそのまま貼り付けて送信してください。</div>
     </div>
 
-    <!-- EN sections -->
-    <div class="section hide" data-lang="en">
-      <h3 id="book-en">📌 Book a table</h3>
-      <div class="tri">For reservations, please send: Date / Time / Guests / Name / Phone.</div>
-    </div>
-    <div class="section hide" data-lang="en">
-      <h3 id="map-en">📌 Directions</h3>
-      <div class="tri">We’re in a lane off Phạm Viết Chánh. Paste this into your ride-hailing app: 106 Phạm Viết Chánh, Bình Thạnh, HCMC</div>
-    </div>
-    <div class="section hide" data-lang="en">
-      <h3 id="happyhour-en">📌 Happy Hour 17:30–20:00</h3>
-      <div class="tri">Great deals on draft beer & highball. Say code <b>FUJI50</b> for a perk.</div>
-    </div>
-    <div class="section hide" data-lang="en">
-      <h3 id="hours-en">📌 Hours</h3>
-      <div class="tri">17:30–02:00 (Fri–Sat till 04:00) | Tel: 0853804188</div>
+    <div class="card hide" data-lang="en">
+      <h3>🕰️ Booking form (copy → paste in DM)</h3>
+      <div class="row-3">
+        <div><label>Date</label><input id="d_en" type="date"></div>
+        <div><label>Time</label><input id="t_en" type="time"></div>
+        <div><label>Guests</label><input id="g_en" type="number" min="1" value="2"></div>
+      </div>
+      <div class="row">
+        <div><label>Name</label><input id="n_en" type="text" placeholder="Your name"></div>
+        <div><label>Phone</label><input id="p_en" type="tel" placeholder="0853804188"></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#" id="copyOpenEN">📋 Copy & open Messenger</a>
+        <a class="btn" href="#" target="_blank">📝 Google Form (optional)</a>
+      </div>
+      <div class="notice">Messenger limits pre-filled text. We <b>copy your details</b> so you can paste in the chat and send.</div>
     </div>
 
-    <!-- VI sections -->
-    <div class="section hide" data-lang="vi">
-      <h3 id="book-vi">📌 Đặt bàn</h3>
-      <div class="tri">Vui lòng gửi: Ngày / Giờ / Số khách / Tên / SĐT.</div>
+    <div class="card hide" data-lang="vi">
+      <h3>🕰️ Form đặt bàn (copy → dán vào DM)</h3>
+      <div class="row-3">
+        <div><label>Ngày</label><input id="d_vi" type="date"></div>
+        <div><label>Giờ</label><input id="t_vi" type="time"></div>
+        <div><label>Khách</label><input id="g_vi" type="number" min="1" value="2"></div>
+      </div>
+      <div class="row">
+        <div><label>Tên</label><input id="n_vi" type="text" placeholder="Tên của bạn"></div>
+        <div><label>SĐT</label><input id="p_vi" type="tel" placeholder="0853804188"></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#" id="copyOpenVI">📋 Sao chép & mở Messenger</a>
+        <a class="btn" href="#" target="_blank">📝 Google Form (tùy chọn)</a>
+      </div>
+      <div class="notice">Messenger hạn chế nhập sẵn nội dung. Chúng tôi sẽ <b>sao chép</b> thông tin để bạn dán vào khung chat.</div>
     </div>
-    <div class="section hide" data-lang="vi">
-      <h3 id="map-vi">📌 Chỉ đường</h3>
-      <div class="tri">Quán nằm trong hẻm đường Phạm Viết Chánh. Dán địa chỉ này vào app gọi xe: 106 Phạm Viết Chánh, Bình Thạnh, TP.HCM</div>
-    </div>
-    <div class="section hide" data-lang="vi">
-      <h3 id="happyhour-vi">📌 Happy Hour 17:30–20:00</h3>
-      <div class="tri">Ưu đãi bia tươi & highball. Nói mã <b>FUJI50</b> để nhận quà.</div>
-    </div>
-    <div class="section hide" data-lang="vi">
-      <h3 id="hours-vi">📌 Giờ mở cửa</h3>
-      <div class="tri">17:30–02:00 (T6–T7 đến 04:00) | ĐT: 0853804188</div>
+
+    <div class="section">
+      <div class="hours" data-lang="jp">営業時間：17:30–翌2:00（⾦⼟〜翌4:00）｜合言葉：FUJI50</div>
+      <div class="hours hide" data-lang="en">Hours: 17:30–02:00 (Fri–Sat till 04:00) | Code: FUJI50</div>
+      <div class="hours hide" data-lang="vi">Giờ: 17:30–02:00 (T6–T7 đến 04:00) | Mã: FUJI50</div>
     </div>
 
     <div class="footer">© Fujina Tokyo • 106 Phạm Viết Chánh, Bình Thạnh, HCMC</div>
@@ -112,46 +125,51 @@
 (function() {
   const qs = (q,ctx=document)=>ctx.querySelector(q);
   const qsa = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
-  const KEY = 'fujina_lang';
+  const KEY = 'fujina_lang_v3';
   const chips = qsa('.chip');
   const setLang = (lang) => {
-    // persist
     try { localStorage.setItem(KEY, lang); } catch(e){}
-    // hours
-    qsa('.hours').forEach(el => el.classList.add('hide'));
-    qsa(`.hours[data-lang="${lang}"]`).forEach(el => el.classList.remove('hide'));
-    // sections
-    const langs = ['jp','en','vi'];
+    const langs=['jp','en','vi'];
     langs.forEach(l => qsa(`[data-lang="${l}"]`).forEach(el => el.classList.add('hide')));
     qsa(`[data-lang="${lang}"]`).forEach(el => el.classList.remove('hide'));
-    // chip state
     chips.forEach(c => c.classList.toggle('active', c.getAttribute('data-lang')===lang));
   };
 
-  // read param or storage
-  const url = new URL(window.location.href);
-  let lang = url.searchParams.get('lang') || (localStorage.getItem(KEY) || 'jp');
-  if(!['jp','en','vi'].includes(lang)) lang = 'jp';
+  let lang = new URL(location.href).searchParams.get('lang') || localStorage.getItem(KEY) || 'jp';
+  if (!['jp','en','vi'].includes(lang)) lang='jp';
   setLang(lang);
+  chips.forEach(c => c.addEventListener('click', () => { const l=c.getAttribute('data-lang'); const u=new URL(location.href); u.searchParams.set('lang',l); history.replaceState(null,'',u.toString()); setLang(l); }));
 
-  // chip events
-  chips.forEach(c => c.addEventListener('click', () => {
-    const l = c.getAttribute('data-lang');
-    const u = new URL(window.location.href);
-    u.searchParams.set('lang', l);
-    history.replaceState(null,'', u.toString());
-    setLang(l);
-  }));
-
-  // anchor handling (#book/#map/#happyhour/#hours)
-  const hash = window.location.hash.replace('#','');
-  const targetIds = ['book','map','happyhour','hours'];
-  const mapId = (h, lang) => (lang==='jp' ? h : `${h}-${lang}`);
-  if (targetIds.includes(hash)) {
-    const tid = mapId(hash, lang);
-    const t = qs(`#${tid}`);
-    if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
+  function copyAndOpen(getText) {
+    const text = getText();
+    navigator.clipboard.writeText(text).then(() => {
+      location.href = 'https://m.me/61578722793188';
+    }).catch(() => {
+      alert('Copy failed. Please copy manually: \n\n'+text);
+      location.href = 'https://m.me/61578722793188';
+    });
   }
+
+  // JP
+  qs('#copyOpenJP').addEventListener('click', (e)=>{
+    e.preventDefault();
+    const d=qs('#d').value, t=qs('#t').value, g=qs('#g').value, n=qs('#n').value, p=qs('#p').value;
+    copyAndOpen(() => `予約希望\n日付: ${d}\n時間: ${t}\n人数: ${g}名\nお名前: ${n}\n電話: ${p}`);
+  });
+
+  // EN
+  qs('#copyOpenEN').addEventListener('click', (e)=>{
+    e.preventDefault();
+    const d=qs('#d_en').value, t=qs('#t_en').value, g=qs('#g_en').value, n=qs('#n_en').value, p=qs('#p_en').value;
+    copyAndOpen(() => `Reservation\nDate: ${d}\nTime: ${t}\nGuests: ${g}\nName: ${n}\nPhone: ${p}`);
+  });
+
+  // VI
+  qs('#copyOpenVI').addEventListener('click', (e)=>{
+    e.preventDefault();
+    const d=qs('#d_vi').value, t=qs('#t_vi').value, g=qs('#g_vi').value, n=qs('#n_vi').value, p=qs('#p_vi').value;
+    copyAndOpen(() => `Đặt bàn\nNgày: ${d}\nGiờ: ${t}\nKhách: ${g}\nTên: ${n}\nSĐT: ${p}`);
+  });
 })();
 </script>
 </body>
